@@ -1,20 +1,13 @@
 # Author: Faycal Kilali
-# Version: 1.0
-# Program: Decision Trees
+# Version: 1.1
+# Program: Goal-based, Information Theoric, Model-based AI Agent for solving word puzzles.
+# Attribution: Dr. Cormier for make_word_list, check_letters, get_wrong_letters, is_consistent methods.
 
 import math
 import random as rand
 import string
 
-from decision_tree_backend import information_gain
 
-# Necessary Configuration by Dr. Cormier, do not edit
-# Configure parameters
-# Puzzle parameters
-n_letters = 5
-n_guesses = 2
-# Word list parameters
-word_list_fname = "linuxwords.txt"
 
 # Function: make_word_list
 # Parameters:
@@ -27,7 +20,8 @@ word_list_fname = "linuxwords.txt"
 #   Generates a word list from a dictionary file. The file should be a newline
 #   separated list of words. Proper nouns, if any, should include one or more
 #   upper-case letters; common nouns should be entirely in lower case.
-def make_word_list(wordlist_fname, n_letters, allow_proper_noun=False):
+
+def make_word_list(wordlist_fname, n_letters, allow_proper_noun=True):
     # Initialization
     wordlist = [] # Initialize to an empty list
     # Open the file containing the list of words
@@ -107,9 +101,9 @@ def is_consistent(word, clue, wrongletters):
 
 
 
-def wordle_ig_solver(X, solution, n_guesses):
+def word_ig_solver(X, solution, n_guesses):
     """
-    tries to solve the wordle game using Information Theory through Information Gain.
+    tries to solve the word game using Information Theory through Information Gain.
     :param X: set of words
     :return: last guess made, number of guesses, sequence of guesses
     """
@@ -232,7 +226,7 @@ def calculate_entropy(X):
     E = 0
     for x in X:
         #p_x = probability_unit(x, X) # General case
-        p_x = 1 / len(X) # OPTIMIZATION: Because in Wordle, we assume there's only one solution, and no duplicate words in our set X.
+        p_x = 1 / len(X) # OPTIMIZATION: Because in this word game, we assume there's only one solution, and no duplicate words in our set X.
         I = information_unit(p_x)
         E = E + I * p_x
     return E
@@ -268,12 +262,11 @@ def probability_unit(x, X):
         samples += 1
     return samples/len(X) # Return the probability p_x
 
+# Configure parameters
+# Puzzle parameters
+n_letters = 5
+n_guesses = 5
+# Word list parameters
+word_list_fname = "linuxwords.txt"
+word_list = make_word_list(word_list_fname, n_letters, allow_proper_noun=False)
 
-#word_list = make_word_list(word_list_fname, n_letters, allow_proper_noun=False)
-#print(wordle_ig_solver(word_list, word_list[10], n_guesses))
-
-print(wordle_ig_solver(["Curie", "Bohrs", "Tesla", "Crick", "Fermi"], "Tesla", n_guesses))
-
-#target = "blank"
-#index = word_list.index(target)  # Returns 1
-#print(index)
