@@ -1,0 +1,24 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#ffffff"/>
+  
+  <!-- Main square tiles representing Wordle -->
+  <g transform="translate(40, 60)">
+    <!-- Green correct tile -->
+    <rect x="0" y="0" width="40" height="40" fill="#4CAF50" rx="4"/>
+    <text x="20" y="28" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="24">I</text>
+    
+    <!-- Yellow present tile -->
+    <rect x="45" y="0" width="40" height="40" fill="#FF9800" rx="4"/>
+    <text x="65" y="28" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="24">G</text>
+    
+    <!-- Gray absent tile -->
+    <rect x="90" y="0" width="40" height="40" fill="#9E9E9E" rx="4"/>
+    <text x="110" y="28" text-anchor="middle" fill="white" font-family="Arial" font-weight="bold" font-size="24">∑</text>
+  </g>
+  
+  <!-- Binary stream to represent Information Theory -->
+  <text x="100" y="140" text-anchor="middle" fill="#404040" font-family="monospace" font-size="14">10110010</text>
+</svg>
+
+
