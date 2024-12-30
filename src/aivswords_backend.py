@@ -4,10 +4,6 @@
 # Attribution: Dr. Cormier for make_word_list, check_letters, get_wrong_letters, is_consistent methods.
 
 import math
-import random as rand
-import string
-
-
 
 # Function: make_word_list
 # Parameters:
